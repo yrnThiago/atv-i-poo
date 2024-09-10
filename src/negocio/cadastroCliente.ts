@@ -30,21 +30,26 @@ export default class CadastroCliente {
 
     public pegaTodosClientes(): void {
         console.log(`\nLista de todos os clientes:`);
-        let cont = 1;
-        this.clientes.forEach(cliente => {
-            console.log(`Id: ` + cont)
-            console.log(`Nome: ` + cliente.nome);
-            console.log(`Nome social: ` + cliente.nomeSocial);
-            console.log(`CPF: ` + cliente.getCpf.getValor);
-            console.log(`--------------------------------------`);
+        if (this.clientes.length >= 1){
+            let cont = 1;
+            this.clientes.forEach(cliente => {
+                console.log(`Id: ` + cont)
+                console.log(`Nome: ` + cliente.nome);
+                console.log(`Nome social: ` + cliente.nomeSocial);
+                console.log(`CPF: ` + cliente.getCpf.getValor);
+                console.log(`--------------------------------------`);
 
-            cont += 1;
-        });
+                cont += 1;
+            });
+        } else {
+            console.log("Nenhum cliente cadastrado!")
+        }
+        
         console.log(`\n`);
     }
 
     public pegaClientePorId(clienteId: number): Cliente {
-        return this.clientes[clienteId];
+        return this.clientes[clienteId-1];
     }
 
     public atualizaClientePorId(clienteId: number): void {
@@ -52,8 +57,8 @@ export default class CadastroCliente {
         let nome = this.entrada.receberTexto(`Nome atual (${atualCliente.nome}) -> `);
         let nomeSocial = this.entrada.receberTexto(`Nome social atual (${atualCliente.nomeSocial}) -> `);
 
-        atualCliente.nome = atualizaDado(atualCliente.nome, nome);
-        atualCliente.nomeSocial = atualizaDado(atualCliente.nomeSocial, nomeSocial);
+        atualCliente.setNome = atualizaDado(atualCliente.nome, nome);
+        atualCliente.setNomeSocial = atualizaDado(atualCliente.nomeSocial, nomeSocial);
     }
 
     public excluiClientePorId(clienteId: number): void {

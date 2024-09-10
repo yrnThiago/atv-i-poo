@@ -14,7 +14,8 @@ export default class CadastroProduto {
     public cadastraProduto(): void {
         console.log(`\nInício do cadastro do produto`);
         let nome = this.entrada.receberTexto(`Por favor informe o nome do produto: `);
-        const produto = new Produto(nome);
+        let preco = this.entrada.receberNumero(`Por favor informe o preço do produto:`)
+        const produto = new Produto(nome, preco);
         this.produtos.push(produto)
         console.log(`\nCadastro concluído :)\n`)
     }
@@ -33,7 +34,7 @@ export default class CadastroProduto {
     }
 
     public pegaProdutoPorId(produtoId: number): Produto {
-        return this.produtos[produtoId];
+        return this.produtos[produtoId-1];
     }
 
     public atualizaProdutoPorId(produtoId: number): void {

@@ -48,8 +48,33 @@ export default class Cliente {
         return this.pets
     }
 
+    public get getValorTotalGasto(): number {
+        let valorTotalGasto = 0
+        this.produtosConsumidos.forEach(produto => {
+            valorTotalGasto += produto.preco
+        });
+
+        return valorTotalGasto
+    }
+
+    public set setNome(novoNome: string){
+        this.nome = novoNome
+    }
+
+    public set setNomeSocial(novoNomeSocial: string){
+        this.nome = novoNomeSocial
+    }
+
     public set setPet(novoPet: Pet) {
         this.pets.push(novoPet);
+    }
+
+    public set setProdutoConsumido(produtoConsumido: Produto){
+        this.produtosConsumidos.push(produtoConsumido)
+    }
+
+    public set setServicoConsumido(servicoConsumido: Servico){
+        this.servicosConsumidos.push(servicoConsumido)
     }
     
 }

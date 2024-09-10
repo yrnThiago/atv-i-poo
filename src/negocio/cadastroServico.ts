@@ -14,7 +14,8 @@ export default class CadastroServico {
     public cadastraServico(): void {
         console.log(`\nInício do cadastro do serviço`);
         let nome = this.entrada.receberTexto(`Por favor informe o nome do serviço: `);
-        let servico = new Servico(nome);
+        let preco = this.entrada.receberNumero(`Por favor informe o preço do serviço: `);
+        let servico = new Servico(nome, preco);
         this.servicos.push(servico)
         console.log(`\nCadastro concluído :)\n`)
     }
@@ -33,7 +34,7 @@ export default class CadastroServico {
     }
 
     public pegaServicoPorId(servicoId: number): Servico {
-        return this.servicos[servicoId];
+        return this.servicos[servicoId-1];
     }
 
     public atualizaServicoPorId(servicoId: number): void {

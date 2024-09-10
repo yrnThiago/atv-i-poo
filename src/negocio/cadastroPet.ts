@@ -41,7 +41,7 @@ export default class CadastroPet {
     }
 
     public pegaPetPorId(petId: number): Pet {
-        return this.pets[petId];
+        return this.pets[petId-1];
     }
 
     public atualizaPetPorId(petId: number): void {

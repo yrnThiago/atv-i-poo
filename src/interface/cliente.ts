@@ -1,9 +1,8 @@
-import Empresa from "../modelo/empresa";
 import CadastroCliente from "../negocio/cadastroCliente";
 import Entrada from "../io/entrada";
-import CadastroPet from "../negocio/cadastroPet";
 import Cliente from "../modelo/cliente";
 import petInterface from "./pet";
+import CadastroProduto from '../negocio/cadastroProduto';
 
 export default function clienteInterface(clientes: Array<Cliente>) {
     let entrada = new Entrada()
@@ -38,23 +37,31 @@ export default function clienteInterface(clientes: Array<Cliente>) {
 
 function alterarClienteInterface(cadastroClientes: CadastroCliente, clienteId: number, entrada: Entrada) {
     console.log(`Opções:`);
-    console.log(`1 - Atualizar`);
-    console.log(`2 - Excluir`);
+    console.log(`1 - Produto`);
+    console.log(`2 - Serviço`);
     console.log(`3 - Pets`);
+    console.log(`4 - Atualizar`);
+    console.log(`5 - Excluir`);
     console.log(`0 - Sair`);
 
     let clienteOopcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
 
     switch(clienteOopcao){
         case 1:
-            cadastroClientes.atualizaClientePorId(clienteId)
+            // consumir produto
             break;
         case 2:
-            cadastroClientes.excluiClientePorId(clienteId)
+            // Consumir serviço
             break;
         case 3:
             let clienteEscolhido = cadastroClientes.pegaClientePorId(clienteId);
             petInterface(clienteEscolhido, clienteEscolhido.getPets)
+            break;
+        case 4:
+            cadastroClientes.atualizaClientePorId(clienteId)
+            break;
+        case 5:
+            cadastroClientes.excluiClientePorId(clienteId)
             break;
         case 0:
             break;
