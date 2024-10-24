@@ -46,7 +46,7 @@ export default function produtosInterface(produtos: Array<Produto>, clientes: Ar
                     cadastroProdutos.pegaProdutosMaisVendidos();
                     break;
                 case 6:
-                    cadastroProdutos.pegaProdutosMaisVendidosPorTipoRaca("tipo", "raca");
+                    cadastroProdutos.pegaProdutosMaisVendidosPorTipoRaca("Higiene", "Cães e Gatos");
                     break;
                 case 0:
                     produtosInterface = false;

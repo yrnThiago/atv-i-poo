@@ -47,7 +47,7 @@ export default function servicosInterface(servicos: Array<Servico>, clientes: Ar
                     cadastroservicos.pegaTodosServicos();
                     break;
                 case 6:
-                    cadastroservicos.pegaServicosMaisVendidosPorTipoRaca("tipo", "raca");
+                    cadastroservicos.pegaServicosMaisVendidosPorTipoRaca("Higiene", "Cães e Gatos");
                     break;
                 case 0:
                     servicosInterface = false;

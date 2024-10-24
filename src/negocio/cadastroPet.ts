@@ -21,7 +21,7 @@ export default class CadastroPet {
         let tipo = this.entrada.receberTexto(`Por favor informe o tipo do pet: `);
         
         const novoPet = new Pet(nome, raca, genero, tipo);
-        this.cliente.setPet = novoPet;
+        this.cliente.adicionaPet(novoPet);
         console.log(`\nCadastro concluído :)\n`);
     }
 
