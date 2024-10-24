@@ -1,6 +1,7 @@
 import Entrada from "../io/entrada"
 import Cliente from "../modelo/cliente"
 import Pet from "../modelo/pet"
+import atualizaDado from "../utils/atualizaDados"
 
 export default class CadastroPet {
     private cliente: Cliente
@@ -41,7 +42,7 @@ export default class CadastroPet {
     }
 
     public pegaPetPorId(petId: number): Pet {
-        return this.pets[petId];
+        return this.pets[petId-1];
     }
 
     public atualizaPetPorId(petId: number): void {
@@ -50,6 +51,13 @@ export default class CadastroPet {
         let raca = this.entrada.receberTexto(`Raça atual (${atualPet.getRaca}) -> `);
         let genero = this.entrada.receberTexto(`Gênero atual (${atualPet.getGenero}) -> `);
         let tipo = this.entrada.receberTexto(`Tipo atual (${atualPet.getTipo}) -> `);
+
+        atualPet.setNome = atualizaDado(atualPet.getNome, nome);
+        atualPet.setRaca = atualizaDado(atualPet.getRaca, raca);
+        atualPet.setGenero = atualizaDado(atualPet.getGenero, genero);
+        atualPet.setTipo = atualizaDado(atualPet.getTipo, tipo);
+
+        console.log(`Pet ${petId} atualizado com sucesso!`);
 
     }
 

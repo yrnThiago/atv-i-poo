@@ -32,6 +32,7 @@ export default class CadastroCliente {
 
     public pegaTodosClientes(): void {
         console.log(`\nLista de todos os clientes:`);
+<<<<<<< HEAD
         let cont = 1;
         this.clientes.forEach(cliente => {
             console.log(`Id: ` + cont)
@@ -40,9 +41,23 @@ export default class CadastroCliente {
             console.log(`CPF: ` + cliente.getCpf.getValor);
             console.log(`Valor Total Gasto R$: ` + cliente.getValorTotalGasto);
             console.log(`--------------------------------------`);
+=======
+        if (this.clientes.length >= 1){
+            let cont = 1;
+            this.clientes.forEach(cliente => {
+                console.log(`Id: ` + cont)
+                console.log(`Nome: ` + cliente.nome);
+                console.log(`Nome social: ` + cliente.nomeSocial);
+                console.log(`CPF: ` + cliente.getCpf.getValor);
+                console.log(`--------------------------------------`);
+>>>>>>> 773ecd960783455377f20bfc344f08b7766767f9
 
-            cont += 1;
-        });
+                cont += 1;
+            });
+        } else {
+            console.log("Nenhum cliente cadastrado!")
+        }
+        
         console.log(`\n`);
     }
 
@@ -131,7 +146,7 @@ export default class CadastroCliente {
     }
 
     public pegaClientePorId(clienteId: number): Cliente {
-        return this.clientes[clienteId];
+        return this.clientes[clienteId-1];
     }
 
     public pegaClientesMaisgastaram(clienteId: number): Cliente {
@@ -143,8 +158,8 @@ export default class CadastroCliente {
         let nome = this.entrada.receberTexto(`Nome atual (${atualCliente.nome}) -> `);
         let nomeSocial = this.entrada.receberTexto(`Nome social atual (${atualCliente.nomeSocial}) -> `);
 
-        atualCliente.nome = atualizaDado(atualCliente.nome, nome);
-        atualCliente.nomeSocial = atualizaDado(atualCliente.nomeSocial, nomeSocial);
+        atualCliente.setNome = atualizaDado(atualCliente.nome, nome);
+        atualCliente.setNomeSocial = atualizaDado(atualCliente.nomeSocial, nomeSocial);
     }
 
     public excluiClientePorId(clienteId: number): void {

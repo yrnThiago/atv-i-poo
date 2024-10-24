@@ -1,5 +1,6 @@
 export default class Produto {
     public nome!: string
+<<<<<<< HEAD
     public valor: number
     public qtdVendidas: number
     public tipo: string
@@ -17,11 +18,39 @@ export default class Produto {
         this.qtdVendidas += qtd
     }
 
+=======
+    public preco: number
+    private vendidos: number
+
+    constructor(nome: string, preco: number) {
+        this.nome = nome
+        this.preco = preco
+        this.vendidos = 0
+    }
+
+>>>>>>> 773ecd960783455377f20bfc344f08b7766767f9
     public get getNome(): string {
         return this.nome
     }
 
+<<<<<<< HEAD
     public get getQtdVendidas(): number {
         return this.qtdVendidas
+=======
+    public get getPreco(): number {
+        return this.preco
+    }
+
+    public get getVendidos(): number {
+        return this.vendidos
+    }
+
+    public set setPreco(novoPreco: number) {
+        this.preco = novoPreco
+    }
+
+    public set setVendidos(quantidadeVendida: number) {
+        this.vendidos = quantidadeVendida
+>>>>>>> 773ecd960783455377f20bfc344f08b7766767f9
     }
 }

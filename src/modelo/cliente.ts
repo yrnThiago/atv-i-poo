@@ -49,6 +49,7 @@ export default class Cliente {
     }
 
     public get getValorTotalGasto(): number {
+<<<<<<< HEAD
         let [total, qtdProdutos, qtdServicos] = [0, 0, 0];
         for (let prod of this.produtosConsumidos) {
             total += prod.valor;
@@ -85,10 +86,34 @@ export default class Cliente {
     
     public set setServicosConsumidos(servicosConsumidos: Servico) {
         this.servicosConsumidos.push(servicosConsumidos);
+=======
+        let valorTotalGasto = 0
+        this.produtosConsumidos.forEach(produto => {
+            valorTotalGasto += produto.preco
+        });
+
+        return valorTotalGasto
+    }
+
+    public set setNome(novoNome: string){
+        this.nome = novoNome
+    }
+
+    public set setNomeSocial(novoNomeSocial: string){
+        this.nome = novoNomeSocial
+>>>>>>> 773ecd960783455377f20bfc344f08b7766767f9
     }
 
     public set setPet(novoPet: Pet) {
         this.pets.push(novoPet);
+    }
+
+    public set setProdutoConsumido(produtoConsumido: Produto){
+        this.produtosConsumidos.push(produtoConsumido)
+    }
+
+    public set setServicoConsumido(servicoConsumido: Servico){
+        this.servicosConsumidos.push(servicoConsumido)
     }
     
 }
