@@ -43,12 +43,10 @@ export default class CadastroCliente {
 
                 cont += 1;
             });
-        } else {
-            console.log("Nenhum cliente cadastrado!")
+
+            console.log(`\n`);
         }
-        
-        console.log(`\n`);
-    }
+    
 
     public pegaClientesQueMaisCompraramProdutos(): void {
         console.log(`\nLista de todos os clientes:`);
@@ -147,8 +145,8 @@ export default class CadastroCliente {
         let nome = this.entrada.receberTexto(`Nome atual (${atualCliente.nome}) -> `);
         let nomeSocial = this.entrada.receberTexto(`Nome social atual (${atualCliente.nomeSocial}) -> `);
 
-        atualCliente.setNome = atualizaDado(atualCliente.nome, nome);
-        atualCliente.setNomeSocial = atualizaDado(atualCliente.nomeSocial, nomeSocial);
+        atualCliente.nome = atualizaDado(atualCliente.nome, nome);
+        atualCliente.nomeSocial = atualizaDado(atualCliente.nomeSocial, nomeSocial);
     }
 
     public excluiClientePorId(clienteId: number): void {
