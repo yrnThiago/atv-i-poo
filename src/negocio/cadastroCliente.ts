@@ -1,11 +1,13 @@
 import Entrada from "../io/entrada"
 import Cliente from "../modelo/cliente"
 import CPF from "../modelo/cpf"
+import Produto from "../modelo/produto"
 import atualizaDado from "../utils/atualizaDados"
 
 export default class CadastroCliente {
     private clientes: Array<Cliente>
     private entrada: Entrada
+
     constructor(clientes: Array<Cliente>) {
         this.clientes = clientes
         this.entrada = new Entrada()
@@ -36,6 +38,7 @@ export default class CadastroCliente {
             console.log(`Nome: ` + cliente.nome);
             console.log(`Nome social: ` + cliente.nomeSocial);
             console.log(`CPF: ` + cliente.getCpf.getValor);
+            console.log(`Valor Total Gasto R$: ` + cliente.getValorTotalGasto);
             console.log(`--------------------------------------`);
 
             cont += 1;
@@ -43,7 +46,95 @@ export default class CadastroCliente {
         console.log(`\n`);
     }
 
+    public pegaClientesQueMaisCompraramProdutos(): void {
+        console.log(`\nLista de todos os clientes:`);
+        let cont = 1;
+        let clientesSorted = this.clientes.sort((n1,n2) => {
+            if (n1.getProdutosConsumidos.length > n2.getProdutosConsumidos.length) {
+                return -1;
+            }
+        
+            if (n1.getProdutosConsumidos.length < n2.getProdutosConsumidos.length) {
+                return 1;
+            }
+        
+            return 0;
+        });
+
+        for (let cliente of clientesSorted) {
+            console.log(`Id: ` + cont)
+            console.log(`Nome: ` + cliente.nome);
+            console.log(`Qtd de produtos comprados: ` + cliente.getProdutosConsumidos.length);
+            console.log(`--------------------------------------`);
+
+            cont += 1;
+
+            if (cont == 10) break;
+        };
+        console.log(`\n`);
+    }
+
+    public pegaClientesQueMaisCompraramServicos(): void {
+        console.log(`\nLista de todos os clientes:`);
+        let cont = 1;
+        let clientesSorted = this.clientes.sort((n1,n2) => {
+            if (n1.getServicosConsumidos.length > n2.getServicosConsumidos.length) {
+                return -1;
+            }
+        
+            if (n1.getServicosConsumidos.length < n2.getServicosConsumidos.length) {
+                return 1;
+            }
+        
+            return 0;
+        });
+
+        for (let cliente of clientesSorted) {
+            console.log(`Id: ` + cont)
+            console.log(`Nome: ` + cliente.nome);
+            console.log(`Qtd de serviços comprados: ` + cliente.getServicosConsumidos.length);
+            console.log(`--------------------------------------`);
+
+            cont += 1;
+
+            if (cont == 10) break;
+        };
+        console.log(`\n`);
+    }
+
+    public pegaClientesQueMaisGastaram(): void {
+        console.log(`\nLista de todos os clientes:`);
+        let cont = 1;
+        let clientesSorted = this.clientes.sort((n1,n2) => {
+            if (n1.getValorTotalGasto > n2.getValorTotalGasto) {
+                return -1;
+            }
+        
+            if (n1.getValorTotalGasto < n2.getValorTotalGasto) {
+                return 1;
+            }
+        
+            return 0;
+        });
+
+        for (let cliente of clientesSorted) {
+            console.log(`Id: ` + cont)
+            console.log(`Nome: ` + cliente.nome);
+            console.log(`Valor Total Gasto R$: ` + cliente.getValorTotalGasto);
+            console.log(`--------------------------------------`);
+
+            cont += 1;
+
+            if (cont == 5) break;
+        };
+        console.log(`\n`);
+    }
+
     public pegaClientePorId(clienteId: number): Cliente {
+        return this.clientes[clienteId];
+    }
+
+    public pegaClientesMaisgastaram(clienteId: number): Cliente {
         return this.clientes[clienteId];
     }
 
@@ -63,6 +154,11 @@ export default class CadastroCliente {
         }else{
             console.log(`Cliente Id: ${clienteId} deletado com sucesso!\n`);
         }
+    }
+
+    public consumiuProduto(clienteId: number, produtoConsumido: Produto): void {
+        let cliente = this.pegaClientePorId(clienteId-1)
+        cliente.setProdutosConsumidos = produtoConsumido;
     }
 
 }

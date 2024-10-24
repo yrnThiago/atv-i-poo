@@ -15,6 +15,9 @@ export default function clienteInterface(clientes: Array<Cliente>) {
             console.log(`1 - Cadastrar cliente`);
             console.log(`2 - Listar clientes`);
             console.log(`3 - Atualizar cliente`);
+            console.log(`4 - Lista 10 Cliente (Produtos)`);
+            console.log(`5 - Lista 10 Cliente (Serviços)`);
+            console.log(`6 - Lista 5 Cliente (Valor)`);
             console.log(`0 - Sair`);
             let clienteOpcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
 
@@ -28,6 +31,15 @@ export default function clienteInterface(clientes: Array<Cliente>) {
                 case 3:
                     let clienteId = entrada.receberNumero(`Por favor, digite o ID do cliente: `)
                     alterarClienteInterface(cadastroClientes, clienteId, entrada)
+                    break;
+                case 4:
+                    cadastroClientes.pegaClientesQueMaisCompraramProdutos();
+                    break;
+                case 5:
+                    cadastroClientes.pegaClientesQueMaisCompraramServicos();
+                    break;
+                case 6:
+                    cadastroClientes.pegaClientesQueMaisGastaram();
                     break;
                 case 0:
                     clienteInterface = false;

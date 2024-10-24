@@ -24,10 +24,10 @@ while (execucao) {
             clienteInterface(empresa.getClientes)
             break;
         case 2:
-            produtosInterface(empresa.getProdutos)
+            produtosInterface(empresa.getProdutos, empresa.getClientes)
             break;
         case 3:
-            servicosInterface(empresa.getServicos)
+            servicosInterface(empresa.getServicos, empresa.getClientes)
             break;
         case 0:
             execucao = false

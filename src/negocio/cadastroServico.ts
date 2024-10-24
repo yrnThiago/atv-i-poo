@@ -14,7 +14,11 @@ export default class CadastroServico {
     public cadastraServico(): void {
         console.log(`\nInício do cadastro do serviço`);
         let nome = this.entrada.receberTexto(`Por favor informe o nome do serviço: `);
-        let servico = new Servico(nome);
+        let preco = this.entrada.receberTexto(`Por favor informe o preço do serviço: `);
+        let tipo = this.entrada.receberTexto(`Por favor informe o tipo do serviço: `);
+        let raca = this.entrada.receberTexto(`Por favor informe o raça do serviço: `);
+
+        let servico = new Servico(nome, Number(preco), tipo, raca);
         this.servicos.push(servico)
         console.log(`\nCadastro concluído :)\n`)
     }
@@ -25,10 +29,69 @@ export default class CadastroServico {
         this.servicos.forEach(servico => {
             console.log(`Id: ` + cont)
             console.log(`Nome: ` + servico.nome);
+            console.log(`Tipo: ` + servico.tipo);
+            console.log(`Raça: ` + servico.raca);
+            console.log(`Qtd Vendidas: ` + servico.qtdVendidas);
             console.log(`--------------------------------------`);
 
             cont += 1;
         });
+        console.log(`\n`);
+    }
+
+    public pegaServicosMaisVendidos(): void {
+        console.log(`\nLista de todos os serviços:`);
+        let servicosSorted = this.servicos.sort((n1,n2) => {
+            if (n1.qtdVendidas > n2.qtdVendidas) {
+                return -1;
+            }
+        
+            if (n1.qtdVendidas < n2.qtdVendidas) {
+                return 1;
+            }
+        
+            return 0;
+        });
+
+        let cont = 1;
+        for (let servico of servicosSorted) {
+            console.log(`Id: ` + cont)
+            console.log(`Nome: ` + servico.nome);
+            console.log(`Tipo: ` + servico.tipo);
+            console.log(`Raça: ` + servico.raca);
+            console.log(`Qtd Vendidas: ` + servico.qtdVendidas);
+            console.log(`--------------------------------------`);
+
+            cont += 1;
+        };
+        console.log(`\n`);
+    }
+
+    public pegaServicosMaisVendidosPorTipoRaca(tipo: string, raca: string): void {
+        console.log(`\nLista de todos os serviços:`);
+        let servicosSorted = this.servicos.sort((n1,n2) => {
+            if (n1.qtdVendidas > n2.qtdVendidas) {
+                return -1;
+            }
+        
+            if (n1.qtdVendidas < n2.qtdVendidas) {
+                return 1;
+            }
+        
+            return 0;
+        });
+
+        let cont = 1;
+        for (let servico of servicosSorted.filter(servico => servico.tipo === tipo && servico.raca === raca)) {
+            console.log(`Id: ` + cont)
+            console.log(`Nome: ` + servico.nome);
+            console.log(`Tipo: ` + servico.tipo);
+            console.log(`Raça: ` + servico.raca);
+            console.log(`Qtd Vendidas: ` + servico.qtdVendidas);
+            console.log(`--------------------------------------`);
+
+            cont += 1;
+        };
         console.log(`\n`);
     }
 
@@ -50,5 +113,12 @@ export default class CadastroServico {
         }else{
             console.log(`Serviço Id: ${servicoId} deletado com sucesso!\n`);
         }
+    }
+
+    public servicoConsumido(servicoId: number, qtdVendida: number): Servico {
+        let servicoConsumido = this.pegaServicoPorId(servicoId)
+        servicoConsumido.setQtdVendidas = qtdVendida;
+        
+        return servicoConsumido;
     }
 }

@@ -48,6 +48,45 @@ export default class Cliente {
         return this.pets
     }
 
+    public get getValorTotalGasto(): number {
+        let [total, qtdProdutos, qtdServicos] = [0, 0, 0];
+        for (let prod of this.produtosConsumidos) {
+            total += prod.valor;
+            qtdProdutos += prod.qtdVendidas;
+        }
+
+        for (let servico of this.servicosConsumidos) {
+            total += servico.valor;
+            qtdServicos += servico.qtdVendidas;
+        }
+
+        return qtdServicos;
+    }
+
+    public set setCpf(cpf: CPF) {
+        this.cpf = cpf;
+    }
+    
+    public set setRgs(rgs: Array<RG>) {
+        this.rgs = rgs;
+    }
+    
+    public set setDataCadastro(dataCadastro: Date) {
+        this.dataCadastro = dataCadastro;
+    }
+    
+    public set setTelefones(telefones: Array<Telefone>) {
+        this.telefones = telefones;
+    }
+    
+    public set setProdutosConsumidos(produtosConsumidos: Produto) {
+        this.produtosConsumidos.push(produtosConsumidos);
+    }
+    
+    public set setServicosConsumidos(servicosConsumidos: Servico) {
+        this.servicosConsumidos.push(servicosConsumidos);
+    }
+
     public set setPet(novoPet: Pet) {
         this.pets.push(novoPet);
     }
