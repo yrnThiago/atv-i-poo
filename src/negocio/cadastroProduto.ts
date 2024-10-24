@@ -14,16 +14,11 @@ export default class CadastroProduto {
     public cadastraProduto(): void {
         console.log(`\nInício do cadastro do produto`);
         let nome = this.entrada.receberTexto(`Por favor informe o nome do produto: `);
-<<<<<<< HEAD
         let preco = this.entrada.receberTexto(`Por favor informe o preço do produto: `);
         let tipo = this.entrada.receberTexto(`Por favor informe o tipo do produto: `);
         let raca = this.entrada.receberTexto(`Por favor informe o raca do produto: `);
 
         const produto = new Produto(nome, Number(preco), tipo, raca);
-=======
-        let preco = this.entrada.receberNumero(`Por favor informe o preço do produto:`)
-        const produto = new Produto(nome, preco);
->>>>>>> 773ecd960783455377f20bfc344f08b7766767f9
         this.produtos.push(produto)
         console.log(`\nCadastro concluído :)\n`)
     }

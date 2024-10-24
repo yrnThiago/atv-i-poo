@@ -32,7 +32,6 @@ export default class CadastroCliente {
 
     public pegaTodosClientes(): void {
         console.log(`\nLista de todos os clientes:`);
-<<<<<<< HEAD
         let cont = 1;
         this.clientes.forEach(cliente => {
             console.log(`Id: ` + cont)
@@ -41,16 +40,6 @@ export default class CadastroCliente {
             console.log(`CPF: ` + cliente.getCpf.getValor);
             console.log(`Valor Total Gasto R$: ` + cliente.getValorTotalGasto);
             console.log(`--------------------------------------`);
-=======
-        if (this.clientes.length >= 1){
-            let cont = 1;
-            this.clientes.forEach(cliente => {
-                console.log(`Id: ` + cont)
-                console.log(`Nome: ` + cliente.nome);
-                console.log(`Nome social: ` + cliente.nomeSocial);
-                console.log(`CPF: ` + cliente.getCpf.getValor);
-                console.log(`--------------------------------------`);
->>>>>>> 773ecd960783455377f20bfc344f08b7766767f9
 
                 cont += 1;
             });
